@@ -1,0 +1,420 @@
+/* ====== Base ====== */
+:root {
+  --bg: #0b1220;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel2: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.10);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+  --muted2: rgba(255, 255, 255, 0.50);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app { min-height: 100%; position: relative; }
+
+/* ====== Topbar ====== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(11, 18, 32, 0.75);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo__mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(88,101,242,0.9), rgba(16,185,129,0.9));
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+.logo__title { font-weight: 700; letter-spacing: 0.2px; }
+.logo__subtitle { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+.topbar__right { display: flex; align-items: center; gap: 10px; }
+
+/* ====== Layout ====== */
+.main {
+  padding: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kpis {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-bottom: 12px;
+}
+@media (max-width: 1100px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.kpi {
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.kpi__label { color: var(--muted); font-size: 12px; }
+.kpi__value { font-size: 24px; font-weight: 750; margin-top: 6px; letter-spacing: 0.3px; }
+
+.grid2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.2fr 0.8fr;
+  margin-bottom: 12px;
+}
+@media (max-width: 900px) {
+  .grid2 { grid-template-columns: 1fr; }
+}
+
+/* ====== Panels ====== */
+.panel {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panel__header {
+  padding: 0 8px 12px 8px;
+}
+
+/* ====== Table Typography + Density Upgrade ====== */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 980px;
+  font-size: 13px;               /* slightly smaller + cleaner */
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+
+.table thead th {
+  text-transform: uppercase;      /* modern header vibe */
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 750;
+  color: rgba(255, 255, 255, 0.62);
+  padding: 14px 14px;
+}
+
+.table tbody td {
+  padding: 14px 14px;            /* more breathing room */
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.table tbody tr {
+  border-radius: 14px;
+}
+
+/* subtle zebra without looking like Excel */
+.table tbody tr:nth-child(2n) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* better hover */
+.row:hover td {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+/* smooth column alignment */
+.table th:last-child,
+.table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.machineTitle {
+  font-weight: 850;
+  font-size: 13px;
+  color: rgba(255,255,255,0.94);
+  letter-spacing: 0.2px;
+}
+
+.machineSub {
+  color: rgba(255,255,255,0.60);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.badge {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 7px 11px;
+}
+
+
+
+
+.tag {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 6px 10px;
+}
+
+.bar {
+  height: 10px;
+  width: 130px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(88,101,242,0.95), rgba(16,185,129,0.95));
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+.score {
+  font-weight: 750;
+  color: rgba(255,255,255,0.70);
+}
+
+.table tbody td {
+  border-bottom: none; /* remove line-by-line */
+}
+
+.table tbody tr td {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.table tbody tr:first-child td {
+  border-top: none;
+}
+
+/* row padding illusion + soft rounding */
+.table tbody tr td:first-child {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.table tbody tr td:last-child {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 140px;
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 220px;
+}
+
+/* ====== Drawer disabled (logic-safe) ====== */
+/*
+.drawer,
+.backdrop,
+.topbar__right {
+  display: none !important;
+}
+*/
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.toolbar__search {
+  width: 100%;
+}
+
+.toolbar__search .input {
+  width: 100%;
+  max-width: 420px;
+}
+
+.toolbar__filters {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+}
+
+.select {
+  min-width: 200px;
+}
+
+.panel__headerLeft {
+  padding-left: 6px;
+}
+
+.aiSummary {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(88,101,242,0.15), rgba(16,185,129,0.12));
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* ===== Drawer Proper Layout ===== */
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -420px; /* hidden off screen */
+  width: 420px;
+  height: 100vh;
+  padding: 24px;
+  background: rgba(11, 18, 32, 0.98);
+  border-left: 1px solid var(--border);
+  box-shadow: -30px 0 80px rgba(0,0,0,0.5);
+  transition: right 0.35s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.drawer.drawer--open {
+  right: 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+  z-index: 900;
+}
+
+/* ===== Drawer Summary Strip ===== */
+
+.drawerSummary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the flex group */
+  gap: 32px;               /* consistent spacing */
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+
+  margin: 10px 0 16px;
+  white-space: nowrap;
+}
+
+
+.drawerSectionTitle {
+  font-weight: 800 !important;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  margin: 16px 0 10px;
+}
+
+.sep {
+  border: none;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 16px 0;
+}
+
+
+
+.drawer__body {
+  padding: 18px 18px 22px;
+}
+
+
+
+.drawerSummary__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawerSummary__value {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.92);
+}
+
+
+.drawerSummary__label {
+  margin-right: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.drawerSummary__item:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.16);
+  margin-left: 14px;
+}
+
+
+.drawerSummary--Down {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+}
+
+.drawerSummary--Warning {
+  background: rgba(234,179,8,0.08);
+  border: 1px solid rgba(234,179,8,0.2);
+}
+
+.drawerSummary--Healthy {
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+}
+
+.drawerSummary--Maintenance {
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+
+
+
+
+
+
+
+
+
+

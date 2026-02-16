@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PressWatch • Machine Health Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__left">
+        <div class="logo">
+          <span class="logo__mark"></span>
+          <div class="logo__text">
+            <div class="logo__title">PressWatch</div>
+            <div class="logo__subtitle">Machine Health Dashboard</div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="topbar__right">
+        <div class="chip chip--ghost">Data: Local JSON</div>
+        <button id="refreshBtn" class="btn btn--ghost" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- KPI Cards -->
+      <section class="kpis" aria-label="Key performance indicators">
+        <div class="kpi">
+          <div class="kpi__label">Total Machines</div>
+          <div class="kpi__value" id="kpiTotal">—</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpi__label">Healthy</div>
+          <div class="kpi__value" id="kpiHealthy">—</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpi__label">Warning</div>
+          <div class="kpi__value" id="kpiWarning">—</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpi__label">Down</div>
+          <div class="kpi__value" id="kpiDown">—</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpi__label">Due Soon (14 days)</div>
+          <div class="kpi__value" id="kpiDueSoon">—</div>
+        </div>
+      </section>
+
+      <!-- Machines Table -->
+      <section class="panel" aria-label="Machines list">
+        <div class="panel__header panel__header--sticky">
+          <div class="panel__headerLeft">
+            <h2 class="panel__title">Machines</h2>
+            <div class="panel__meta" id="tableMeta">—</div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <input
+                id="searchInput"
+                class="input"
+                type="search"
+                placeholder="Search name, type, or location…"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="toolbar__filters" role="group" aria-label="Status filters">
+              <button class="chip chip--select" data-status="All" type="button">All</button>
+              <button class="chip chip--select" data-status="Healthy" type="button">Healthy</button>
+              <button class="chip chip--select" data-status="Warning" type="button">Warning</button>
+              <button class="chip chip--select" data-status="Down" type="button">Down</button>
+              <button class="chip chip--select" data-status="Maintenance" type="button">Maintenance</button>
+            </div>
+
+            <select id="sortSelect" class="select" aria-label="Sort machines">
+              <option value="health-desc">Health: High → Low</option>
+              <option value="health-asc">Health: Low → High</option>
+              <option value="due-asc">Maintenance Due: Soonest</option>
+              <option value="criticality-desc">Criticality: High → Low</option>
+              <option value="name-asc">Name: A → Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tableWrap" role="region" aria-label="Machines table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Machine</th>
+                <th>Status</th>
+                <th>Health</th>
+                <th>Criticality</th>
+                <th>Next Maintenance</th>
+                <th>Alerts</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="machinesTbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Details Drawer -->
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer__header">
+        <div>
+          <div class="drawer__title" id="drawerTitle">Machine</div>
+          <div class="drawer__subtitle" id="drawerSubtitle">—</div>
+        </div>
+        <button class="btn btn--ghost" id="drawerCloseBtn" type="button">Close</button>
+      </div>
+      <div class="drawer__body" id="drawerBody"></div>
+    </aside>
+
+    <div class="backdrop" id="backdrop" hidden></div>
+  </div>
+
+  <!-- Use the correct relative path to your JS -->
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+
