@@ -81,7 +81,6 @@ Planned enhancements:
 * 🎨 Improved button and control styling
 * 🌐 API-based data fetching instead of static seed data
 * 🧠 Replace heuristic AI summary with real ML inference or API integration
-* ⚛️ Optional React version for production scalability
 
 ---
 
